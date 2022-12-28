@@ -2,6 +2,7 @@ package com.platzi.apicompras.persistence.mapper;
 
 import com.platzi.apicompras.domain.Product;
 import com.platzi.apicompras.persistence.entity.Producto;
+import org.mapstruct.InheritInverseConfiguration;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.Mappings;
@@ -22,6 +23,10 @@ public interface ProductMapper {
     Product toProduct(Producto producto);
 
     List<Product> toProducts(List<Producto> productos);
+
+    @InheritInverseConfiguration
+    @Mapping(target = "codigoBarras", ignore = true)
+    Producto toProducto(Product product);
 }
 
 
